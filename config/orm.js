@@ -8,17 +8,19 @@ var orm={
             sendBack(result);
         });
     },
-    insertOne: function(burger){
-        var queryString="insert into burgers (burger_name) values ('?')";
-        console.log(queryString);
-        connection.query(queryString, [burger], function(err){
+    insertOne: function(burger, cb){
+        var burgerName = burger.name
+        var queryString="insert into burgers (burger_name) values (?)";
+        connection.query(queryString, [burgerName], function(err, res){
             if (err) throw err;
+            cb(res);
         });
     },
-    updateOne: function(id){
-        var queryString="update burgers, set devoured '1', where id '?'";
-        connection.query(queryString, [id], function(err){
+    updateOne: function(id, cb){
+        var queryString="update burgers set devoured = 1 where id = "+id;
+        connection.query(queryString, [id], function(err, res){
             if(err) throw err;
+            cb(res);
         });
     }
 };

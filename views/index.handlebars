@@ -3,10 +3,15 @@
 <ul>
     {{#each burgers}}
   	    <li>
-            <img src="/assets/img/burger.jpg">
   		    <p><span class="label">ID:</span> {{this.id}}</p>
-            <p><span class="label">Quote:</span> {{this.burger_name}}</p>
-            <button data-id="{{this.id}}" class="devour">Devour!</button>
+            <p><span class="label">Burger:</span> {{this.burger_name}}</p>
+            {{#unless devoured}}
+                <img src="/assets/img/burger.png">
+                <button data-id="{{this.id}}" class="devour">Devour!</button>
+            {{/unless}}
+            {{#if devoured}}
+                <img src="/assets/img/eaten.png">
+            {{/if}}
   	    </li>
     {{/each}}
 </ul>
@@ -23,14 +28,15 @@
     $(function(){
         $(".devour").on("click", function(event){
             var id=$(this).data("id");
-            $.ajax(id, {type: "PUT"}).then(function(){
+            $.ajax("/burger/"+id, {type: "PUT"}).then(function(){
                 location.reload();
             });
         });
         $(".create-form").on("submit", function(event){
             event.preventDefault();
             var newBurger=$("#newBurger").val().trim();
-            $.ajax(newBurger, {type: "POST"}).then(function(){
+            var burgerObj={name: newBurger}
+            $.ajax("/burger", {type: "POST", data: burgerObj}).then(function(){
                 location.reload();
             });
         });
