@@ -1,16 +1,20 @@
 {
   "name": "burger",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Eat Da Burger is the hottest burger eating coded by Daniel Imparato! Just enter the name of your most desired burger creation and stuff that sammich down your (virtual) throat!",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimparato/burger.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "mysql": "^2.17.1"
-  }
+  "bugs": {
+    "url": "https://github.com/dimparato/burger/issues"
+  },
+  "homepage": "https://github.com/dimparato/burger#readme"
 }
