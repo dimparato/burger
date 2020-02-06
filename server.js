@@ -14,7 +14,7 @@ app.use(express.json());
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-app.use(router);
+app.use("/", router);
 
 app.listen(PORT, function(){
     console.log("App listening on PORT: "+PORT);
