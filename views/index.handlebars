@@ -27,10 +27,10 @@
 <script>
     $(function(){
         $(".devour").on("click", function(event){
+            event.preventDefault();
             var id=$(this).data("id");
-            $.ajax("/burger/"+id, {type: "PUT"}).then(function(){
-                location.reload();
-            });
+            $.ajax("/burger/"+id, {type: "PUT"});
+            location.reload();
         });
         $(".create-form").on("submit", function(event){
             event.preventDefault();
